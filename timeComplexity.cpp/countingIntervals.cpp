@@ -16,12 +16,17 @@ int main() {
             cout << 0; 
         } else {
             if(x==1) {
-                cout << (r-l-1); 
+                if(l == r) {
+                    cout << 0; 
+                } else {
+                    cout << (r-l-1);   
+                }
             } else if(x == 2 || x == 3) {
-                cout << (r-l); 
+                    cout << (r-l);   
             } else if(x==4) {
                 cout << (r-l+1); 
             }
         }
+        cout << endl; 
     }
 }
