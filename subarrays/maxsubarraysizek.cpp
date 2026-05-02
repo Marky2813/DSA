@@ -29,3 +29,12 @@ int main() {
     }
     cout << maxSum;  
 }
+
+//create a sum function
+long long sum(long long arr[], int start, int end) {
+    long long total = 0; 
+    for(int i = start; i <= end; i++) {
+        total += arr[i]; 
+    }
+    return total; 
+}
