@@ -1,26 +1,25 @@
 #include<iostream>
-#include<vector>
+#include<map>
 using namespace std;
  
 int main() {
     int n;
     long long x;
     cin >> n >> x;
-    vector<long long> elements;
-    for(int i = 0; i <n; i++) {
+    map<long long, int> sum;
+    sum.insert({0, 0});
+    long long total = 0;
+    for(int i = 1; i <=n; i++) {
         long long ele;
         cin >> ele; 
-        elements.push_back(ele); 
-    }
-    vector<long long> sum; 
-    for(int i = 0; i < n; i++) {
-        if(i == 0) {
-            sum.push_back(elements[i]);
+        total += ele; 
+        if(sum.count(total - x)) {
+            auto it = sum.find(total-x);
+            cout << it->second+1 << " " << i;
+            return 0; 
         }
-        sum.push_back(elements[i] + sum[i-1]); 
+        sum.insert({total, i});
     }
-    for(int i = 0; i < n; i++) {
-        cout << sum[i];
-    }
-    cout << "NO"; 
+    cout << -1; 
+    return 0;
 }
