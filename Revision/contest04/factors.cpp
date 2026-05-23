@@ -3,25 +3,27 @@
 using namespace std; 
 
 int main() {
-  int x, y;
+  long long x, y;
   cin >> x >> y; 
-  int factorsx = 0; 
-  int factorsy =0; 
-  for(int j = 1; j <  sqrt(x); j++) {
+  long long factorsx = 0; 
+  long long factorsy =0; 
+  for(int j = 1; j <= sqrt(x); j++) {
       if(x%j == 0) {
-        if(x == j/x) {
+        if(j == x/j) {
         factorsx +=1;
       } else {
           factorsx +=2;
-        }
+        } 
       }
     }
-    for(int j = 1; j <  sqrt(y); j++) {
-      if(y == j/y) {
+    for(int j = 1; j <= sqrt(y); j++) {
+      if(y%j == 0) {
+        if(j == y/j) {
         factorsy +=1;
       } else {
           factorsy +=2;
         }
+      }
     }
 
   if(factorsx < factorsy) {
