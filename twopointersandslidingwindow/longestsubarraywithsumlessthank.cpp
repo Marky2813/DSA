@@ -23,3 +23,5 @@ int main() {
   }
   cout << len; 
 }
+
+//note that the time complexity is O(n) since both are moving forward. the inner loop executes n times in total. the space complexity is O(1) since we are using only a few variables.so it is n + n for time complexity. 
