@@ -1,11 +1,13 @@
 #include<iostream>
 using namespace std;
 
-void increasing(int n) {
-  if(n == 0) {
+void zigzag(int n) {
+  if(n == 1) {
+    cout << 1 << "\n";
     return; 
   }
-  increasing(n-1);
+  cout<<n<<"\n"; 
+  zigzag(n-1);
   cout<<n<<"\n"; 
 
 }
@@ -13,5 +15,5 @@ void increasing(int n) {
 int main() {
   int n; 
   cin >> n; 
-  increasing(n);
+  zigzag(n);
 }
