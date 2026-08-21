@@ -2,19 +2,15 @@
 #include<vector>
 using namespace std;
 
-long long rev(int n, vector<long long>& arr) {
+bool rev(int n, vector<long long>& arr) {
   if(n == 1) {
-    return arr[0]; 
+    return true; 
   }
-  long long smallAns = rev(n-1, arr);
-  if(smallAns == 0) {
-    return 0; 
+  bool smallAns = rev(n-1, arr);
+  if(!smallAns) {
+    return false; 
   }
-  if(smallAns < arr[n-1]){
-    return 1;
-  } else {
-    return 0;
-  }
+  return arr[n-1] >= arr[n-2];
 }
 
 int main() {
@@ -24,10 +20,10 @@ int main() {
   for(int i = 0; i < n; i++) {
     cin >> arr[i];
   } 
-  long long ans = rev(n, arr);
-  if(ans == 0) {
-    cout << "no";
-  } else {
+  bool ans = rev(n, arr);
+  if(ans) {
     cout << "yes";
+  } else {
+    cout << "no";
   }
 }
