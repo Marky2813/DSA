@@ -2,24 +2,45 @@
 #include<string>
 #include<vector> 
 using namespace std; 
-
-void f(int i, int j, int n, int m, vector<char> &path, vector<vector<int>> &arr,
-       vector<vector<bool>> &visited, vector<string> &ans) {
-  if (i < 0 || j < 0 || i > n || j > m || arr[i][j] == 0 || visited[i][j]) {
+ 
+void f(int i, int j, int n, int m, vector<char> &path, vector<vector<int>> &arr, vector<vector<bool>> &visited, vector<string> &ans) {
+  if(i > n || j > m ||i < 0 || j < 0 || (arr[i][j] == 0)) {
     return;
   }
-  if (i == n && j == m) {
-    ans.push_back(string(path.begin(), path.end()));
+  if(visited[i][j]) {
     return;
   }
-  visited[i][j] = true;
-  path.push_back('D'); f(i+1, j, n, m, path, arr, visited, ans); path.pop_back();
-  path.push_back('L'); f(i, j-1, n, m, path, arr, visited, ans); path.pop_back();
-  path.push_back('R'); f(i, j+1, n, m, path, arr, visited, ans); path.pop_back();
-  path.push_back('U'); f(i-1, j, n, m, path, arr, visited, ans); path.pop_back();
-  visited[i][j] = false;
+  
+  if(i == n && j == m){
+    string s;
+    for(int i = 0; i < path.size(); i++) {
+      s+= path[i]; 
+    }
+    ans.push_back(s); 
+    return;  
+  }
+  
+  visited[i][j] = true; 
+ 
+  path.push_back('D');
+  f(i+1, j, n, m,  path, arr, visited, ans);
+  path.pop_back();
+  
+  path.push_back('L');
+  f(i, j-1, n, m,  path, arr, visited, ans);
+  path.pop_back();
+  
+    path.push_back('R');
+  f(i, j+1, n, m,  path, arr, visited, ans);
+  path.pop_back();
+  
+    path.push_back('U');
+  f(i-1, j, n, m,  path, arr, visited, ans);
+  path.pop_back();
+  
+  visited[i][j] = false; 
 }
-
+ 
 int main() {
   int N, M; 
   cin >> N;
