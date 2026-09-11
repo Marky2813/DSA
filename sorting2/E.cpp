@@ -2,17 +2,20 @@
 #include<vector>
 using namespace std;
 
-
 int merge(vector<long long> &arr, int l, int r) {
   vector<long long> temp; 
+  cout << l << " " << r << "\n";
   int i = l; 
   int mid = (l+r)/2; 
-  int j = mid+1; 
-  int cnt = 0;
-for (int i = l; i <= mid; i++) {
-    while (j <= r && arr[i] > 2 * arr[j]) j++;
-    cnt += (j - (mid + 1));
-}
+  int j = mid+1;
+  int ans = 0; 
+  for(int i = l; i <= mid; i++) {
+    while(j <= r && arr[i] > 2 * arr[j]) {
+      cout << "the indexes are (" << i << ", " << j << ") and the numbers are (" << arr[i] << ", " << arr[j] << ")" << "\n";
+      j++;
+      ans += (mid - i + 1);
+  }
+  }
   j = mid+1;
   while(i < (mid+1) && j < (r+1)) {
     if(arr[i] <= arr[j]) {
@@ -38,7 +41,7 @@ for (int i = l; i <= mid; i++) {
     arr[k] = temp[ptr];
     ptr++;
   }
-  return cnt; 
+  return ans; 
 }
 
 int f(vector<long long> &arr, int l, int r) {
