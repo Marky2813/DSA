@@ -66,7 +66,7 @@ int main() {
 
   cout << ans.size() << "\n";
   for(int i = 0; i < ans.size(); i++) {
-    for(auto &row : ans[i]) cout << row << "\n";
+    for(auto row : ans[i]) cout << row << "\n";
     if(i != ans.size()-1) cout << "\n";
   }
 }
