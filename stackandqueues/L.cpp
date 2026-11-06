@@ -13,21 +13,15 @@ int main() {
   stack<pair<long long, int>> st;
   vector<long long> ans(n);
   for(int i = 0; i < n; i++) {
-    while(!st.empty() && st.top().first < arr[i]) {
+    int count = 1; 
+    while(!st.empty() && st.top().first <= arr[i]) {
+      count += st.top().second;
       st.pop();
     } 
-    if(st.empty()) {
-      ans[i] = -1;
-    } else {
-      ans[i] = st.top().second;
-    }
-    st.push({arr[i], i});  
+    ans[i] = count;
+    st.push({arr[i], count});  
   }
   for(int i = 0; i <n; i++) {
-    if(ans[i] == -1) {
-      cout << "1" << " ";
-    } else {
-    cout << i - ans[i]<< " ";
-    }
+    cout << ans[i]<< " ";
   }
 }
