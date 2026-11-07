@@ -10,7 +10,7 @@ int main() {
   for(int i = 0; i < n; i++) {
     cin >> arr[i];
   }
-  stack<pair<long long, int>> st;
+  stack<pair<long long, int>> 
   vector<long long> ans(n);
   for(int i = 0; i < n; i++) {
     int count = 1; 
